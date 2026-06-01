@@ -1,0 +1,79 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "cdc84141-12c9-4c50-bf42-4b84cec41f98"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Cat1\n"
+          ]
+        }
+      ],
+      "source": [
+        "class AnimalShelter():\n",
+        "  def __init__(self):\n",
+        "    self.cats = []\n",
+        "    self.dogs = []\n",
+        "\n",
+        "  def enqueue(self, animal, type):\n",
+        "    if type == 'Cat':\n",
+        "      self.cats.append(animal)\n",
+        "    else:\n",
+        "      self.dogs.append(animal)\n",
+        "\n",
+        "  def dequeueCat(self):\n",
+        "    if len(self.cats) == 0:\n",
+        "      return None\n",
+        "    else:\n",
+        "      cat = self.cats.pop(0)\n",
+        "      return cat\n",
+        "\n",
+        "  def dequeueDog(self):\n",
+        "    if len(self.dogs) == 0:\n",
+        "      return None\n",
+        "    else:\n",
+        "      dog = self.dogs.pop(0)\n",
+        "      return dog\n",
+        "\n",
+        "  def dequeueAny(self):\n",
+        "    if len(self.cats) == 0:\n",
+        "      result = self.dogs.pop(0)\n",
+        "    else:\n",
+        "      result = self.cats.pop(0)\n",
+        "    return result\n",
+        "\n",
+        "customQueue = AnimalShelter()\n",
+        "customQueue.enqueue('Cat1', 'Cat')\n",
+        "customQueue.enqueue('Cat2', 'Cat')\n",
+        "customQueue.enqueue('Dog1', 'Dog')\n",
+        "customQueue.enqueue('Cat3', 'Cat')\n",
+        "customQueue.enqueue('Dog2', 'Dog')\n",
+        "print(customQueue.dequeueAny())"
+      ]
+    }
+  ]
+}

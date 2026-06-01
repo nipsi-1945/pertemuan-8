@@ -1,0 +1,55 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 11,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "f4fb1383-8ab8-407c-d55b-5e31ed38510d"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "deque([], maxlen=3)\n",
+            "deque([2, 3, 4], maxlen=3)\n",
+            "None\n",
+            "deque([], maxlen=3)\n"
+          ]
+        }
+      ],
+      "source": [
+        "from collections import deque\n",
+        "\n",
+        "customQueue = deque(maxlen=3)\n",
+        "print(customQueue)\n",
+        "\n",
+        "customQueue.append(1)\n",
+        "customQueue.append(2)\n",
+        "customQueue.append(3)\n",
+        "customQueue.append(4)\n",
+        "print(customQueue)\n",
+        "print(customQueue.clear())\n",
+        "print(customQueue)"
+      ]
+    }
+  ]
+}

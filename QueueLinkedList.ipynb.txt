@@ -1,0 +1,116 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 12,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "6fc67166-a214-4654-c71d-c3b575010849"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1 2 3\n",
+            "1\n",
+            "1 2 3\n"
+          ]
+        }
+      ],
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, value=None):\n",
+        "        self.value = value\n",
+        "        self.next = None\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return str(self.value)\n",
+        "\n",
+        "class LinkedList:\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "        self.tail = None\n",
+        "\n",
+        "    def __iter__(self):\n",
+        "        curNode = self.head\n",
+        "        while curNode:\n",
+        "            yield curNode\n",
+        "            curNode = curNode.next\n",
+        "\n",
+        "class Queue:\n",
+        "    def __init__(self):\n",
+        "        self.linkedList = LinkedList()\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        values = [str(x) for x in self.linkedList]\n",
+        "        return ' '.join(values)\n",
+        "\n",
+        "    def enqueue(self, value):\n",
+        "        newNode = Node(value)\n",
+        "        if self.linkedList.head == None:\n",
+        "            self.linkedList.head = newNode\n",
+        "            self.linkedList.tail = newNode\n",
+        "        else:\n",
+        "            self.linkedList.tail.next = newNode\n",
+        "            self.linkedList.tail = newNode\n",
+        "\n",
+        "    def isEmpty(self):\n",
+        "        if self.linkedList.head == None:\n",
+        "            return True\n",
+        "        else:\n",
+        "            return False\n",
+        "\n",
+        "    def dequeue(self):\n",
+        "        if self.isEmpty():\n",
+        "            return \"There is not any node in the Queue\"\n",
+        "        else:\n",
+        "            tempNode = self.linkedList.head\n",
+        "            if self.linkedList.head == self.linkedList.tail:\n",
+        "                self.linkedList.head = None\n",
+        "                self.linkedList.tail = None\n",
+        "            else:\n",
+        "                self.linkedList.head = self.linkedList.head.next\n",
+        "            return tempNode\n",
+        "\n",
+        "    def peek(self):\n",
+        "        if self.isEmpty():\n",
+        "            return \"There is not any node in the Queue\"\n",
+        "        else:\n",
+        "            return self.linkedList.head\n",
+        "\n",
+        "    def delete(self):\n",
+        "        self.linkedList.head = None\n",
+        "        self.linkedList.tail = None\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "custQueue = Queue()\n",
+        "custQueue.enqueue(1)\n",
+        "custQueue.enqueue(2)\n",
+        "custQueue.enqueue(3)\n",
+        "print(custQueue)\n",
+        "print(custQueue.peek())\n",
+        "print(custQueue)"
+      ]
+    }
+  ]
+}

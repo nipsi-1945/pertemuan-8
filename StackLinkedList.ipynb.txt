@@ -1,0 +1,101 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 20,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "ff37ae48-5de6-4e41-a400-02dea12d559c"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "3\n"
+          ]
+        }
+      ],
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, value = None):\n",
+        "        self.value = value\n",
+        "        self.next = None\n",
+        "\n",
+        "class LinkedList:\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "\n",
+        "    def __iter__(self):\n",
+        "        curNode = self.head\n",
+        "        while curNode:\n",
+        "            yield curNode\n",
+        "            curNode = curNode.next\n",
+        "\n",
+        "class Stack:\n",
+        "    def __init__(self):\n",
+        "        self.LinkedList = LinkedList()\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        values = [str(x.value) for x in self.LinkedList]\n",
+        "        return '\\n'.join(values)\n",
+        "\n",
+        "    def isEmpty(self):\n",
+        "        if self.LinkedList.head == None:\n",
+        "            return True\n",
+        "        else:\n",
+        "            return False\n",
+        "\n",
+        "    def push(self, value):\n",
+        "        node = Node(value)\n",
+        "        node.next = self.LinkedList.head\n",
+        "        self.LinkedList.head = node\n",
+        "\n",
+        "    def pop(self):\n",
+        "        if self.isEmpty():\n",
+        "            return \"There is not any element in the stack\"\n",
+        "        else:\n",
+        "            nodeValue = self.LinkedList.head.value\n",
+        "            self.LinkedList.head = self.LinkedList.head.next\n",
+        "            return nodeValue\n",
+        "\n",
+        "    def peek(self):\n",
+        "        if self.isEmpty():\n",
+        "            return \"There is not any element in the stack\"\n",
+        "        else:\n",
+        "            nodeValue = self.LinkedList.head.value\n",
+        "            return nodeValue\n",
+        "\n",
+        "    def delete(self):\n",
+        "        self.LinkedList.head = None\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "customStack = Stack()\n",
+        "customStack.push(1)\n",
+        "customStack.push(2)\n",
+        "customStack.push(3)\n",
+        "\n",
+        "print(customStack.peek())"
+      ]
+    }
+  ]
+}

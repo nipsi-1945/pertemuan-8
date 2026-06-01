@@ -1,0 +1,80 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "3e42f31d-648d-4889-ccc8-8f8b71b9009d"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1\n",
+            "2\n"
+          ]
+        }
+      ],
+      "source": [
+        "class Stack():\n",
+        "  def __init__(self):\n",
+        "    self.list = []\n",
+        "\n",
+        "  def __len__(self):\n",
+        "    return len(self.list)\n",
+        "\n",
+        "  def push(self, item):\n",
+        "    self.list.append(item)\n",
+        "\n",
+        "  def pop(self):\n",
+        "    if len(self.list) == 0:\n",
+        "      return None\n",
+        "    return self.list.pop()\n",
+        "\n",
+        "class QueueviaStack():\n",
+        "  def __init__(self):\n",
+        "    self.inStack = Stack()\n",
+        "    self.outStack = Stack()\n",
+        "\n",
+        "  def enqueue(self, item):\n",
+        "    self.inStack.push(item)\n",
+        "\n",
+        "  def dequeue(self):\n",
+        "    while len(self.inStack):\n",
+        "      self.outStack.push(self.inStack.pop())\n",
+        "    result = self.outStack.pop()\n",
+        "    while len(self.outStack):\n",
+        "      self.inStack.push(self.outStack.pop())\n",
+        "    return result\n",
+        "\n",
+        "\n",
+        "customQueue = QueueviaStack()\n",
+        "customQueue.enqueue(1)\n",
+        "customQueue.enqueue(2)\n",
+        "customQueue.enqueue(3)\n",
+        "print(customQueue.dequeue())\n",
+        "customQueue.enqueue(4)\n",
+        "print(customQueue.dequeue())"
+      ]
+    }
+  ]
+}

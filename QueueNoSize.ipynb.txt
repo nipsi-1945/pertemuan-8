@@ -1,0 +1,82 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 13,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "3824bf04-b6e8-4de9-bf4a-f40263e0f22d"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1\n"
+          ]
+        }
+      ],
+      "source": [
+        "class Queue:\n",
+        "    def __init__(self):\n",
+        "        self.items = []\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        values = [str(x) for x in self.items]\n",
+        "        return ' '.join(values)\n",
+        "\n",
+        "    def isEmpty(self):\n",
+        "        if self.items == []:\n",
+        "            return True\n",
+        "        else:\n",
+        "            return False\n",
+        "\n",
+        "    def enqueue(self, value):\n",
+        "        self.items.append(value)\n",
+        "        return \"The element is inserted at the end of Queue\"\n",
+        "\n",
+        "    def dequeue(self):\n",
+        "        if self.isEmpty():\n",
+        "            return \"The is not any element in the Queue\"\n",
+        "        else:\n",
+        "            return self.items.pop(0)\n",
+        "\n",
+        "    def peek(self):\n",
+        "        if self.isEmpty():\n",
+        "            return \"The is not any element in the Queue\"\n",
+        "        else:\n",
+        "            return self.items[0]\n",
+        "\n",
+        "    def delete(self):\n",
+        "        self.items = None\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "customQueue = Queue()\n",
+        "customQueue.enqueue(1)\n",
+        "customQueue.enqueue(2)\n",
+        "customQueue.enqueue(3)\n",
+        "print(customQueue.peek())\n",
+        "customQueue.delete()"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "dfbe7107-6899-4218-9c62-3a1c693775f8"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "False\n",
+            "True\n",
+            "2\n"
+          ]
+        }
+      ],
+      "source": [
+        "class MultiStack:\n",
+        "    def __init__(self, stacksize):\n",
+        "        self.numberstacks = 3\n",
+        "        self.custList = [0] * (stacksize * self.numberstacks)\n",
+        "        self.sizes = [0] * self.numberstacks\n",
+        "        self.stacksize = stacksize\n",
+        "\n",
+        "    def isFull(self, stacknum):\n",
+        "        if self.sizes[stacknum] == self.stacksize:\n",
+        "            return True\n",
+        "        else:\n",
+        "            return False\n",
+        "\n",
+        "    def isEmpty(self, stacknum):\n",
+        "        if self.sizes[stacknum] == 0:\n",
+        "            return True\n",
+        "        else:\n",
+        "            return False\n",
+        "\n",
+        "    def indexOfTop(self, stacknum):\n",
+        "        offset = stacknum * self.stacksize\n",
+        "        return offset + self.sizes[stacknum]- 1\n",
+        "\n",
+        "    def push(self, item, stacknum):\n",
+        "        if self.isFull(stacknum):\n",
+        "            return \"The stack is full\"\n",
+        "        else:\n",
+        "            self.sizes[stacknum] += 1\n",
+        "            self.custList[self.indexOfTop(stacknum)] = item\n",
+        "\n",
+        "    def pop(self, stacknum):\n",
+        "        if self.isEmpty(stacknum):\n",
+        "            return \"The stack is empty\"\n",
+        "        else:\n",
+        "            value = self.custList[self.indexOfTop(stacknum)]\n",
+        "            self.custList[self.indexOfTop(stacknum)] = 0\n",
+        "            self.sizes[stacknum] -= 1\n",
+        "            return value\n",
+        "\n",
+        "    def peek(self, stacknum):\n",
+        "        if self.isEmpty(stacknum):\n",
+        "            return \"The stack is empty\"\n",
+        "        else:\n",
+        "            value = self.custList[self.indexOfTop(stacknum)]\n",
+        "            return value\n",
+        "\n",
+        "\n",
+        "customStack = MultiStack(6)\n",
+        "print(customStack.isFull(0))\n",
+        "print(customStack.isEmpty(1))\n",
+        "customStack.push(1, 0)\n",
+        "customStack.push(2, 0)\n",
+        "customStack.push(3, 2)\n",
+        "print(customStack.pop(0))"
+      ]
+    }
+  ]
+}

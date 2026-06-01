@@ -1,0 +1,45 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 17,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "26dcb1f7-9a8e-4f8c-bd35-ac5853718a6f"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1\n"
+          ]
+        }
+      ],
+      "source": [
+        "from multiprocessing import Queue\n",
+        "\n",
+        "customQueue = Queue(maxsize= 3)\n",
+        "customQueue.put(1)\n",
+        "print(customQueue.get())"
+      ]
+    }
+  ]
+}

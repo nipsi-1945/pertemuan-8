@@ -1,0 +1,75 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "9f50fdb1-52e2-4fa8-e448-9730d40c1f3e"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "4\n"
+          ]
+        }
+      ],
+      "source": [
+        "class PlateStack():\n",
+        "    def __init__(self, capacity):\n",
+        "        self.capacity = capacity\n",
+        "        self.stacks = []\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return self.stacks\n",
+        "\n",
+        "    def push(self, item):\n",
+        "        if len(self.stacks) > 0 and (len(self.stacks[-1])) < self.capacity:\n",
+        "            self.stacks[-1].append(item)\n",
+        "        else:\n",
+        "            self.stacks.append([item])\n",
+        "\n",
+        "    def pop(self):\n",
+        "        while len(self.stacks) and len(self.stacks[-1]) == 0:\n",
+        "            self.stacks.pop()\n",
+        "        if len(self.stacks) == 0:\n",
+        "            return None\n",
+        "        else:\n",
+        "            return self.stacks[-1].pop()\n",
+        "\n",
+        "    def pop_at(self, stackNumber):\n",
+        "        if len(self.stacks[stackNumber]) > 0:\n",
+        "            return self.stacks[stackNumber].pop()\n",
+        "        else:\n",
+        "            return None\n",
+        "\n",
+        "\n",
+        "customStack= PlateStack(2)\n",
+        "customStack.push(1)\n",
+        "customStack.push(2)\n",
+        "customStack.push(3)\n",
+        "customStack.push(4)\n",
+        "print(customStack.pop_at(1))"
+      ]
+    }
+  ]
+}

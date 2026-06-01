@@ -1,0 +1,88 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "VvqAhRSdyhff",
+        "outputId": "bdff2df1-0372-45a0-bf10-4375b4420b36"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "5\n",
+            "5\n",
+            "3\n",
+            "5\n"
+          ]
+        }
+      ],
+      "source": [
+        "class Node():\n",
+        "    def __init__(self, value=None, next = None):\n",
+        "        self.value = value\n",
+        "        self.next = next\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        string = str(self.value)\n",
+        "        if self.next:\n",
+        "            string += ',' + str(self.next)\n",
+        "        return string\n",
+        "\n",
+        "class Stack():\n",
+        "    def __init__(self):\n",
+        "        self.top = None\n",
+        "        self.minNode = None\n",
+        "\n",
+        "    def min(self):\n",
+        "        if not self.minNode:\n",
+        "            return None\n",
+        "        return self.minNode.value\n",
+        "\n",
+        "    def push(self, item):\n",
+        "        if self.minNode and (self.minNode.value < item):\n",
+        "            self.minNode = Node(value = self.minNode.value, next=self.minNode)\n",
+        "        else:\n",
+        "            self.minNode = Node(value = item, next=self.minNode)\n",
+        "        self.top = Node(value=item, next=self.top)\n",
+        "\n",
+        "    def pop(self):\n",
+        "        if not self.top:\n",
+        "            return None\n",
+        "        self.minNode = self.minNode.next\n",
+        "        item = self.top.value\n",
+        "        self.top = self.top.next\n",
+        "        return item\n",
+        "\n",
+        "customStack = Stack()\n",
+        "customStack.push(5)\n",
+        "print(customStack.min())\n",
+        "customStack.push(6)\n",
+        "print(customStack.min())\n",
+        "customStack.push(3)\n",
+        "print(customStack.min())\n",
+        "customStack.pop()\n",
+        "print(customStack.min())\n"
+      ]
+    }
+  ]
+}
